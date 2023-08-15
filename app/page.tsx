@@ -17,8 +17,8 @@ export default async function Home() {
 }
 
 export async function fetchData() {
-  let sbParams: ISbStoriesParams = { version: 'draft' };
+  const sbParams: ISbStoriesParams = { version: 'draft' };
 
   const storyblokApi: StoryblokClient = getStoryblokApi();
-  return storyblokApi.get(`cdn/stories/home`, sbParams);
+  return storyblokApi.get('cdn/stories/home', sbParams);
 }

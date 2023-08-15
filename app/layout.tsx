@@ -1,9 +1,10 @@
 import { apiPlugin, storyblokInit } from '@storyblok/react/rsc';
+import React from 'react';
 
-import StoryblokProvider from '../components/StoryblokProvider';
+import StoryblokProvider from '@/components/StoryblokProvider';
 
 storyblokInit({
-  accessToken: process.env.STORYBLOK_ACCESS,
+  accessToken: process.env.NEXT_PUBLIC_STORYBLOK_ACCESS,
   use: [apiPlugin],
 });
 
