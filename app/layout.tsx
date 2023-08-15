@@ -1,7 +1,11 @@
 import { apiPlugin, storyblokInit } from '@storyblok/react/rsc';
+import { Bitter } from 'next/font/google';
 import React from 'react';
 
 import StoryblokProvider from '@/components/StoryblokProvider';
+
+// These styles apply to every route in the application
+import './globals.css';
 
 storyblokInit({
   accessToken: process.env.NEXT_PUBLIC_STORYBLOK_ACCESS,
@@ -16,11 +20,13 @@ interface RootLayoutType {
   children: React.ReactNode;
 }
 
+const bitter = Bitter({ subsets: ['latin-ext'] });
+
 export default function RootLayout({ children }: RootLayoutType) {
   return (
     <StoryblokProvider>
       <html lang="en">
-        <body>{children}</body>
+        <body className={bitter.className}>{children}</body>
       </html>
     </StoryblokProvider>
   );
