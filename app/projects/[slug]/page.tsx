@@ -39,3 +39,6 @@ export async function generateStaticParams() {
     slug: story.slug,
   }));
 }
+
+// Revalidate every request to avoid local caching, remove before going to prod
+export const revalidate = 0;
