@@ -5,23 +5,23 @@ import {
   getStoryblokApi,
 } from '@storyblok/react/rsc';
 
+export async function getData(slug: string) {
+  const sbParams: ISbStoriesParams = { version: 'draft' };
+
+  const storyblokApi: StoryblokClient = getStoryblokApi();
+  return storyblokApi.get(`cdn/stories/projects/${slug}`, sbParams);
+}
+
 export default async function Project({
   params,
 }: {
   params: { slug: string };
 }) {
   const { slug } = params;
-  const { data } = await fetchData(slug);
+  const { data } = await getData(slug);
   const { story } = data;
 
   return <StoryblokStory story={story} />;
-}
-
-export async function fetchData(slug: string) {
-  const sbParams: ISbStoriesParams = { version: 'draft' };
-
-  const storyblokApi: StoryblokClient = getStoryblokApi();
-  return storyblokApi.get(`cdn/stories/projects/${slug}`, sbParams);
 }
 
 // Generate paths dynamically

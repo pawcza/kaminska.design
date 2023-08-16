@@ -5,18 +5,7 @@ import {
   getStoryblokApi,
 } from '@storyblok/react/rsc';
 
-export default async function Home() {
-  const { data } = await fetchData();
-
-  return (
-    <>
-      {/*<h1>Story: {data.story.id}</h1>*/}
-      <StoryblokStory story={data.story} />
-    </>
-  );
-}
-
-export async function fetchData() {
+export async function getData() {
   const sbParams: ISbStoriesParams = {
     version: 'draft',
     resolve_relations: 'home-page.projects',
@@ -24,4 +13,15 @@ export async function fetchData() {
 
   const storyblokApi: StoryblokClient = getStoryblokApi();
   return storyblokApi.get('cdn/stories/home', sbParams);
+}
+
+export default async function Home() {
+  const { data } = await getData();
+
+  return (
+    <>
+      {/*<h1>Story: {data.story.id}</h1>*/}
+      <StoryblokStory story={data.story} />
+    </>
+  );
 }
