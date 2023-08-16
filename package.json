@@ -10,6 +10,9 @@
     "proxy": "local-ssl-proxy --source 3010 --target 3000",
     "prettier": "npx prettier . --write"
   },
+  "engines": {
+    "node": "18.*"
+  },
   "devDependencies": {
     "@storyblok/react": "^2.4.4",
     "@trivago/prettier-plugin-sort-imports": "^4.2.0",

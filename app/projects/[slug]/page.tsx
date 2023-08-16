@@ -5,7 +5,7 @@ import {
   getStoryblokApi,
 } from '@storyblok/react/rsc';
 
-export async function getData(slug: string) {
+async function getData(slug: string) {
   const sbParams: ISbStoriesParams = { version: 'draft' };
 
   const storyblokApi: StoryblokClient = getStoryblokApi();
