@@ -24,6 +24,7 @@ const HomePage = ({ blok }) => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: i / 10 }}
+            viewport={{ once: true }}
           >
             {el}
           </motion.h4>
@@ -34,6 +35,7 @@ const HomePage = ({ blok }) => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: i / 10 }}
+            viewport={{ once: true }}
           >
             {el}
           </motion.h4>
@@ -54,13 +56,14 @@ const HomePage = ({ blok }) => {
               whileInView={{ opacity: 1 }}
               transition={{ delay: i / 10 }}
               onClick={() => router.push(`/projects/${slug}`)}
+              viewport={{ once: true }}
             >
               <div
                 style={{ backgroundImage: `url(${thumbnail.filename})` }}
                 className="h-full w-64 bg-no-repeat bg-cover relative cursor-pointer grayscale hover:grayscale-0"
               >
                 <span className="text-9xl absolute -bottom-14 -right-20 italic font-thin">
-                  0{i + 1}
+                  #0{i + 1}
                 </span>
               </div>
               <div className="pl-4">

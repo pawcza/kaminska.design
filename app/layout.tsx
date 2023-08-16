@@ -2,7 +2,7 @@ import { apiPlugin, storyblokInit } from '@storyblok/react/rsc';
 import { Bitter } from 'next/font/google';
 import React from 'react';
 
-import StoryblokProvider from '@/components/StoryblokProvider';
+import StoryblokProvider from '@/components/storyblok/StoryblokProvider';
 
 // These styles apply to every route in the application
 import './globals.css';

@@ -2,8 +2,8 @@
 
 import { apiPlugin, storyblokInit } from '@storyblok/react/rsc';
 
-import HomePage from '@/components/HomePage';
-import Project from '@/components/Project';
+import HomePage from '@/components/storyblok/HomePage';
+import Project from '@/components/storyblok/Project';
 
 storyblokInit({
   accessToken: process.env.NEXT_PUBLIC_STORYBLOK_ACCESS,
