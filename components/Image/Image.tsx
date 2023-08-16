@@ -1,4 +1,5 @@
 import { AnimatePresence, motion, useDomEvent } from 'framer-motion';
+import NextImage from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 
 const transition = {
@@ -51,10 +52,7 @@ const Image = ({
         )}
       </AnimatePresence>
 
-      <motion.img
-        alt={alt || ''}
-        className={`object-cover ${isOpen ? 'z-10 max-h-[90%]' : ''}`}
-        src={src}
+      <motion.div
         key={key}
         transition={transition}
         initial={{ opacity: 0 }}
@@ -62,7 +60,19 @@ const Image = ({
         viewport={{ once: true }}
         onClick={() => setOpen(!isOpen)}
         layout={true}
-      />
+        className={`relative overflow-hidden ${
+          isOpen ? 'z-10 max-h-[90%] max-w-[80%]' : ''
+        }`}
+      >
+        <NextImage
+          alt={alt || ''}
+          src={`${src}/m/`}
+          objectFit="contain"
+          width={0}
+          height={0}
+          style={{ width: '100%', height: 'auto' }}
+        />
+      </motion.div>
     </div>
   );
 };

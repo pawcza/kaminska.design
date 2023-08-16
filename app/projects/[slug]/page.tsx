@@ -1,3 +1,4 @@
+import { getBase64ImageUrl } from '@/helpers/images';
 import {
   ISbStoriesParams,
   StoryblokClient,
@@ -20,6 +21,36 @@ export default async function Project({
   const { slug } = params;
   const { data } = await getData(slug);
   const { story } = data;
+
+  const blur = await getBase64ImageUrl(
+    'https://a.storyblok.com/f/39898/3310x2192/e4ec08624e/demo-image.jpeg/m/500x0/filters:blur(50):quality(30)',
+  );
+
+  const gallery = story.content.gallery.map((image) => {
+    const { filename, alt, id } = image;
+
+    return {
+      filename,
+      alt,
+      id,
+      blur,
+    };
+  });
+
+  console.dir(gallery);
+
+  // const gallery = story.content.gallery.map(async ({ filename, alt, id }) => {
+  //   const data64Blur = await getBase64ImageUrl(
+  //     `${filename}/m/500x0/filters:blur(50):quality(30)`,
+  //   );
+  //
+  //   return {
+  //     data64Blur,
+  //     filename,
+  //     alt,
+  //     id,
+  //   };
+  // });
 
   return <StoryblokStory story={story} />;
 }

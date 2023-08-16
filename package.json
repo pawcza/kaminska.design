@@ -36,6 +36,8 @@
   },
   "dependencies": {
     "framer-motion": "^10.15.2",
+    "imagemin": "^8.0.1",
+    "imagemin-jpegtran": "^7.0.0",
     "local-ssl-proxy": "^2.0.5"
   }
 }
