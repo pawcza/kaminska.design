@@ -6,7 +6,15 @@ const transition = {
   damping: 25,
   stiffness: 120,
 };
-const Image = ({ src, key }) => {
+const Image = ({
+  src,
+  key,
+  alt,
+}: {
+  src: string;
+  key: string;
+  alt?: string;
+}) => {
   const [isOpen, setOpen] = useState(false);
   const [finishedAnimation, setFinishedAnimation] = useState(false);
 
@@ -44,6 +52,7 @@ const Image = ({ src, key }) => {
       </AnimatePresence>
 
       <motion.img
+        alt={alt || ''}
         className={`object-cover ${isOpen ? 'z-10 max-h-[90%]' : ''}`}
         src={src}
         key={key}

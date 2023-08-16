@@ -1,6 +1,6 @@
 // "use server";
 import { storyblokEditable } from '@storyblok/react/rsc';
-import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
+import { LayoutGroup, motion } from 'framer-motion';
 
 import Image from '@/components/Image/Image';
 import Link from '@/components/Link';
@@ -81,7 +81,11 @@ const Project = ({ blok }) => {
         className="w-screen p-16 flex justify-center items-center relative max-w-7xl m-auto"
       >
         <div className="h-auto w-1/2 shrink-0 relative">
-          <Image src={descImage.filename} key={descImage.id} />
+          <Image
+            src={descImage.filename}
+            key={descImage.id}
+            alt={descImage.alt}
+          />
         </div>
         <div className="p-4 h-full min-h-[600px] flex flex-col justify-center">
           <p className="text-xl font-thin text-gray-800 bg-white p-8">
@@ -91,8 +95,8 @@ const Project = ({ blok }) => {
       </section>
       <section className="p-16 grid gap-16 grid-cols-2 justify-items-center max-w-5xl m-auto">
         <LayoutGroup>
-          {gallery.map(({ filename, id }) => (
-            <Image src={filename} key={id} />
+          {gallery.map(({ filename, id, alt }) => (
+            <Image src={filename} key={id} alt={alt} />
           ))}
         </LayoutGroup>
       </section>

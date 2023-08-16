@@ -19,7 +19,7 @@ const HomePage = ({ blok }) => {
       <section className="w-screen h-screen flex justify-center items-center p-16">
         {thinIntroText.split('').map((el, i) => (
           <motion.h4
-            key={`letter-${el}-${i}`}
+            key={`letter-thin-${el}-${i}`}
             className="font-black text-6xl"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -31,6 +31,7 @@ const HomePage = ({ blok }) => {
         ))}
         {fatIntroText.split('').map((el, i) => (
           <motion.h4
+            key={`letter-fat-${el}-${i}`}
             className="font-thin text-6xl"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
