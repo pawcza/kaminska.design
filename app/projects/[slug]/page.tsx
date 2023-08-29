@@ -15,7 +15,7 @@ async function getData(slug: string) {
 
 async function getImages(gallery: []) {
   return await Promise.all(
-    gallery.map(async (item: any) => {
+    gallery.map(async (item: unknown & { filename: string }) => {
       const data64Blur = await getBase64ImageUrl(
         `${item.filename}/m/100x0/filters:blur(50):quality(30)`,
       );
