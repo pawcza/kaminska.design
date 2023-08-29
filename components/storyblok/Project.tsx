@@ -23,6 +23,7 @@ const Project = ({ blok }) => {
     document
       .getElementById('project-details')
       .scrollIntoView({ behavior: 'smooth' });
+    // Doesnt' seem to work on Firefox?
   };
 
   return (
