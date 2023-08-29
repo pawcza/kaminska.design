@@ -1,13 +1,8 @@
-import imagemin from 'imagemin';
-import imageminJpegtran from 'imagemin-jpegtran';
-
-export async function getBase64ImageUrl(imageUrl: string) {
-  // fetch image and convert it to base64
-  const response = await fetch(imageUrl);
+export async function getBase64ImageUrl(
+  url: string,
+): Promise<string | undefined> {
+  const response = await fetch(url);
   const buffer = await response.arrayBuffer();
-  const minified = await imagemin.buffer(Buffer.from(buffer), {
-    plugins: [imageminJpegtran()],
-  });
-  const base64 = Buffer.from(minified).toString('base64');
-  return `data:image/jpeg;base64,${base64}`;
+  const data = Buffer.from(buffer).toString('base64');
+  return `webp;base64,${data}`;
 }

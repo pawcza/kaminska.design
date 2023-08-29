@@ -1,6 +1,6 @@
 // "use server";
 import { storyblokEditable } from '@storyblok/react/rsc';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 
 import Mousey from '@/components/Mousey';
@@ -18,7 +18,7 @@ const HomePage = ({ blok }) => {
     <main {...storyblokEditable(blok)}>
       <section className="w-screen h-screen flex justify-center items-center p-16">
         {thinIntroText.split('').map((el, i) => (
-          <motion.h4
+          <m.h4
             key={`letter-thin-${el}-${i}`}
             className="font-black text-6xl"
             initial={{ opacity: 0 }}
@@ -27,10 +27,10 @@ const HomePage = ({ blok }) => {
             viewport={{ once: true }}
           >
             {el}
-          </motion.h4>
+          </m.h4>
         ))}
         {fatIntroText.split('').map((el, i) => (
-          <motion.h4
+          <m.h4
             key={`letter-fat-${el}-${i}`}
             className="font-thin text-6xl"
             initial={{ opacity: 0 }}
@@ -39,7 +39,7 @@ const HomePage = ({ blok }) => {
             viewport={{ once: true }}
           >
             {el}
-          </motion.h4>
+          </m.h4>
         ))}
         <Mousey onClick={handleOnClick} />
       </section>
@@ -50,7 +50,7 @@ const HomePage = ({ blok }) => {
         {projects.map(({ content, uuid, slug }, i) => {
           const { thumbnail, thumbTitle, thumbDesc } = content;
           return (
-            <motion.div
+            <m.div
               key={uuid}
               className="h-64 flex w-1/3"
               initial={{ opacity: 0 }}
@@ -68,10 +68,12 @@ const HomePage = ({ blok }) => {
                 </span>
               </div>
               <div className="pl-4">
-                <p className="text-4xl font-black">{thumbTitle}</p>
-                <p className="uppercase text-gray-800">{thumbDesc}</p>
+                <p className="text-4xl">{thumbTitle}</p>
+                <p className="uppercase text-gray-800 font-light pt-2">
+                  {thumbDesc}
+                </p>
               </div>
-            </motion.div>
+            </m.div>
           );
         })}
       </section>

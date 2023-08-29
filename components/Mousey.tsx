@@ -1,10 +1,10 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 
 import './mousey.css';
 
 const Mousey = ({ onClick }) => {
   return (
-    <motion.div
+    <m.div
       className="scroll-downs"
       onClick={onClick}
       initial={{ opacity: 0 }}
@@ -13,7 +13,7 @@ const Mousey = ({ onClick }) => {
       <div className="mousey">
         <div className="scroller"></div>
       </div>
-    </motion.div>
+    </m.div>
   );
 };
 
