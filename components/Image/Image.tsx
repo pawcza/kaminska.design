@@ -1,6 +1,6 @@
 import { AnimatePresence, m, useDomEvent } from 'framer-motion';
 import NextImage, { ImageProps } from 'next/image';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 type Props = {
   src: string;
@@ -15,19 +15,8 @@ type Props = {
 
 const Image: React.FC<Props> = (props) => {
   const [open, setOpen] = useState(false);
-  const [finishedAnimation, setFinishedAnimation] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [loadedSize, setLoadedSize] = useState({ width: 0, height: 0 });
-
-  useEffect(() => {
-    if (!open) {
-      setTimeout(() => {
-        setFinishedAnimation(true);
-      }, 300);
-    } else {
-      setFinishedAnimation(false);
-    }
-  }, [open]);
 
   useDomEvent(
     useRef(window),
@@ -57,15 +46,15 @@ const Image: React.FC<Props> = (props) => {
       <div
         className={`${
           open
-            ? 'flex justify-center items-center fixed top-0 left-0 z-50 h-full w-full cursor-zoom-out'
+            ? 'flex justify-center items-center fixed top-0 left-0 z-50 h-full w-full'
             : 'cursor-zoom-in relative'
-        } ${finishedAnimation ? '' : 'z-50'}`}
+        }`}
       >
         <AnimatePresence initial={false}>
           {open && (
             <m.div
               key="shade"
-              className="h-full w-full bg-black fixed left-0 z-0"
+              className="h-full w-full bg-black fixed left-0 z-0 cursor-zoom-out"
               onClick={() => setOpen(false)}
               initial={{ opacity: 0 }}
               animate={{ opacity: 0.5 }}
@@ -81,7 +70,6 @@ const Image: React.FC<Props> = (props) => {
           handleLoadingComplete={handleLoadingComplete}
           loaded={loaded}
           open={open}
-          allowToggle={finishedAnimation || open}
           fullHeight={props.fullHeight}
           fit={props.fit}
         />
@@ -107,7 +95,6 @@ const ImageInsides: React.FC<
     loaded: boolean;
     open?: boolean;
     zoom?: boolean;
-    allowToggle?: boolean;
     fit?: 'contain' | 'cover';
   }
 > = (props) => {
@@ -123,7 +110,6 @@ const ImageInsides: React.FC<
     children,
     open,
     zoom,
-    allowToggle,
     fit = 'contain',
   } = props;
   return (
@@ -131,18 +117,21 @@ const ImageInsides: React.FC<
       <NextImage
         key={key}
         alt={alt || ''}
-        onClick={() => (allowToggle && zoom ? handleClick(!open) : '')}
+        onClick={() => (!open && zoom ? handleClick(true) : '')}
         src={`${src}/m/filters:quality(75)`}
         width={0}
         height={0}
         placeholder={data64Blur ? 'blur' : 'empty'}
-        className={`bg-transparent transition duration-300 w-auto h-full ${
+        className={`bg-transparent transition duration-300 w-auto ${
           loaded ? 'scale-100 bg-gray-400 blur-0' : 'scale-120 blur-2xl'
-        } ${
-          open ? 'max-w-[calc(100%-4rem)] max-h-[calc(100%-4rem)]' : ''
-        } object-${fit} ${fullHeight ? 'h-full w-full' : 'h-auto'} `}
+        } ${open ? 'max-w-[calc(100%-4rem)] max-h-[calc(100%-4rem)]' : ''} ${
+          fullHeight ? 'h-full w-full' : 'h-auto'
+        } `}
         onLoadingComplete={handleLoadingComplete}
         blurDataURL={`data:image/${data64Blur}`}
+        style={{
+          objectFit: fit,
+        }}
       />
       {children}
     </>
