@@ -25,3 +25,6 @@ export default async function Home() {
     </>
   );
 }
+
+// Revalidate every request to avoid local caching, remove before going to prod
+export const revalidate = 0;

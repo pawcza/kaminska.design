@@ -10,6 +10,7 @@ type Props = {
   children?: React.ReactNode;
   zoom?: boolean;
   fullHeight?: boolean;
+  fit?: 'contain' | 'cover';
 } & ImageProps;
 
 const Image: React.FC<Props> = (props) => {
@@ -22,11 +23,12 @@ const Image: React.FC<Props> = (props) => {
     if (!open) {
       setTimeout(() => {
         setFinishedAnimation(true);
-      }, 500);
+      }, 300);
     } else {
       setFinishedAnimation(false);
     }
   }, [open]);
+
   useDomEvent(
     useRef(window),
     'scroll',
@@ -55,15 +57,15 @@ const Image: React.FC<Props> = (props) => {
       <div
         className={`${
           open
-            ? 'flex justify-center items-center fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 h-full w-full cursor-zoom-out'
-            : 'cursor-zoom-in'
+            ? 'flex justify-center items-center fixed top-0 left-0 z-50 h-full w-full cursor-zoom-out'
+            : 'cursor-zoom-in relative'
         } ${finishedAnimation ? '' : 'z-50'}`}
       >
         <AnimatePresence initial={false}>
           {open && (
             <m.div
               key="shade"
-              className="h-full w-full bg-black fixed left-0 -top-[1px] z-0"
+              className="h-full w-full bg-black fixed left-0 z-0"
               onClick={() => setOpen(false)}
               initial={{ opacity: 0 }}
               animate={{ opacity: 0.5 }}
@@ -81,6 +83,7 @@ const Image: React.FC<Props> = (props) => {
           open={open}
           allowToggle={finishedAnimation || open}
           fullHeight={props.fullHeight}
+          fit={props.fit}
         />
       </div>
     </>
@@ -90,6 +93,7 @@ const Image: React.FC<Props> = (props) => {
       handleLoadingComplete={handleLoadingComplete}
       loaded={loaded}
       fullHeight={props.fullHeight}
+      fit={props.fit}
     />
   );
 };
@@ -104,6 +108,7 @@ const ImageInsides: React.FC<
     open?: boolean;
     zoom?: boolean;
     allowToggle?: boolean;
+    fit?: 'contain' | 'cover';
   }
 > = (props) => {
   const {
@@ -119,29 +124,27 @@ const ImageInsides: React.FC<
     open,
     zoom,
     allowToggle,
+    fit = 'contain',
   } = props;
   return (
-    <m.div
-      key={key}
-      className={`relative overflow-hidden ${
-        zoom && open ? 'z-10 max-w-[80%]' : ''
-      } ${fullHeight ? 'h-full' : ''}`}
-      onClick={() => (allowToggle && zoom ? handleClick(!open) : '')}
-      layout
-    >
+    <>
       <NextImage
+        key={key}
         alt={alt || ''}
+        onClick={() => (allowToggle && zoom ? handleClick(!open) : '')}
         src={`${src}/m/filters:quality(75)`}
         width={0}
         height={0}
         placeholder={data64Blur ? 'blur' : 'empty'}
-        className={`bg-gray-400 transition duration-300 w-full object-cover ${
+        className={`bg-transparent transition duration-300 w-auto h-full ${
           loaded ? 'scale-100 bg-gray-400 blur-0' : 'scale-120 blur-2xl'
-        } ${fullHeight ? 'h-full' : 'h-auto'}`}
+        } ${
+          open ? 'max-w-[calc(100%-4rem)] max-h-[calc(100%-4rem)]' : ''
+        } object-${fit} ${fullHeight ? 'h-full w-full' : 'h-auto'} `}
         onLoadingComplete={handleLoadingComplete}
         blurDataURL={`data:image/${data64Blur}`}
       />
       {children}
-    </m.div>
+    </>
   );
 };

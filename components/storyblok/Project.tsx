@@ -23,17 +23,16 @@ const Project = ({ blok }) => {
     document
       .getElementById('project-details')
       .scrollIntoView({ behavior: 'smooth' });
-    // Doesnt' seem to work on Firefox?
   };
 
   return (
     <>
       <section
         {...storyblokEditable(blok)}
-        className="w-screen h-screen flex md:flex-row flex-col justify-between relative"
+        className="w-screen md:h-screen flex md:flex-row flex-col relative"
       >
         <m.div
-          className="h-[58vh] md:h-full md:w-1/2 shrink-0 relative"
+          className="md:h-full md:w-1/3 md:min-w-[500px] grow-0 relative"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -44,15 +43,16 @@ const Project = ({ blok }) => {
             alt={mainImage.alt}
             fullHeight
             data64Blur={mainImage.data64Blur}
+            fit="cover"
           >
-            <span className="text-9xl text-white italic absolute right-8 bottom-2 [text-shadow:_0_1px_0_rgb(0_0_0_/_40%)] font-black">
+            <span className="text-4xl md:text-6xl text-white italic absolute right-8 bottom-2 [text-shadow:_0_1px_0_rgb(0_0_0_/_40%)] font-black">
               #0{number}
             </span>
           </Image>
         </m.div>
         <div className="p-8 h-full flex flex-col justify-between relative">
           <m.div
-            className="left-0 bg-white border-b-2 border-black py-2 cursor-pointer w-fit"
+            className="fixed md:relative top-0 left-0 pl-8 md:-ml-8 z-50 border-b-2 border-black py-2 cursor-pointer w-full md:w-fit backdrop-blur"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.1 }}
@@ -69,9 +69,10 @@ const Project = ({ blok }) => {
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
             viewport={{ once: true }}
+            className={'pb-16 md:pb-0'}
           >
-            <h1 className="text-4xl font-light">{title}</h1>
-            <p className="p-4 -ml-4 text-xl font-thin text-gray-800 bg-white">
+            <h1 className="text-2xl md:text-4xl font-light">{title}</h1>
+            <p className="p-4 -ml-4 text-md md:text-xl font-light text-gray-800 bg-white max-w-xl">
               {shortDesc}
             </p>
           </m.div>
@@ -88,18 +89,19 @@ const Project = ({ blok }) => {
       </section>
       <section
         id="project-details"
-        className="w-screen p-4 flex md:flex-row flex-col justify-center items-center relative max-w-7xl m-auto"
+        className="pt-16 md:pt-0 w-screen p-4 flex md:flex-row flex-col justify-center items-center relative max-w-7xl m-auto"
       >
         <div className="h-auto w-1/2 shrink-0 relative">
           <Image
             src={descImage.filename}
             key={descImage.id}
             alt={descImage.alt}
+            data64Blur={descImage.data64Blur}
             zoom
           />
         </div>
         <div className="md:p-4 h-full md:min-h-[600px] flex flex-col justify-center">
-          <p className="text-xl font-thin text-gray-800 bg-white p-4">
+          <p className="text-md md:text-xl font-light text-gray-800 bg-white p-4">
             {description}
           </p>
         </div>

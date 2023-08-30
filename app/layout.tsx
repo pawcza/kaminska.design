@@ -1,5 +1,5 @@
 import { apiPlugin, storyblokInit } from '@storyblok/react/rsc';
-import { Bitter } from 'next/font/google';
+import { Lexend } from 'next/font/google';
 import React from 'react';
 
 import StoryblokProvider from '@/components/storyblok/StoryblokProvider';
@@ -20,13 +20,13 @@ interface RootLayoutType {
   children: React.ReactNode;
 }
 
-const bitter = Bitter({ subsets: ['latin-ext'] });
+const lexend = Lexend({ subsets: ['latin-ext'] });
 
 export default function RootLayout({ children }: RootLayoutType) {
   return (
     <StoryblokProvider>
       <html lang="en">
-        <body className={bitter.className}>{children}</body>
+        <body className={lexend.className}>{children}</body>
       </html>
     </StoryblokProvider>
   );
