@@ -20,7 +20,7 @@ const Project = ({ blok }) => {
     <>
       <section
         {...storyblokEditable(blok)}
-        className="w-screen mt-[42px] md:mt-0 min-h-[calc(100vh-42px)] h-screen flex md:flex-row flex-col relative"
+        className="w-screen mt-[3rem] md:mt-0 min-h-[calc(100vh-42px)] h-screen flex md:flex-row flex-col relative"
       >
         <m.div
           className="h-full md:w-1/3 md:min-w-[500px] grow-0 relative"
@@ -41,9 +41,9 @@ const Project = ({ blok }) => {
             </span>
           </Image>
         </m.div>
-        <div className="p-8 h-full flex flex-col justify-between relative mt-auto md:mt-0">
+        <div className="p-8 flex flex-col justify-between relative mt-auto md:mt-0">
           <m.div
-            className="fixed md:relative top-0 left-0 pl-8 md:-ml-8 z-50 border-b-2 border-black py-2 cursor-pointer w-full md:w-fit backdrop-blur bg-[rgba(255,255,255,.5)]"
+            className="fixed h-12 md:relative top-0 left-0 pl-8 md:-ml-8 z-50 border-b-2 border-black py-2 cursor-pointer w-full md:w-fit backdrop-blur bg-[rgba(255,255,255,.5)]"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.1 }}

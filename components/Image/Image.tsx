@@ -1,6 +1,6 @@
-import { AnimatePresence, m, useDomEvent } from 'framer-motion';
+import { AnimatePresence, m } from 'framer-motion';
 import NextImage, { ImageProps } from 'next/image';
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 
 type Props = {
   src: string;
@@ -17,14 +17,6 @@ const Image: React.FC<Props> = (props) => {
   const [open, setOpen] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [loadedSize, setLoadedSize] = useState({ width: 0, height: 0 });
-
-  useDomEvent(
-    useRef(window),
-    'scroll',
-    () => props.zoom && open && setOpen(false),
-  );
-
-  useDomEvent(useRef(window), 'resize', () => setSize);
 
   const handleLoadingComplete = (image: HTMLImageElement) => {
     setLoaded(true);

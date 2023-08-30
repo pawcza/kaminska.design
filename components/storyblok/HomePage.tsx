@@ -23,7 +23,7 @@ const HomePage = ({ blok }) => {
 
   return (
     <main {...storyblokEditable(blok)}>
-      <section className="w-screen h-screen p-4 flex justify-center items-center">
+      <section className="w-screen h-screen p-4 flex justify-center items-center overflow-hidden">
         <div className="flex justify-center items-center p-16 bg-white">
           {thinIntroText.split('').map((el, i) => (
             <m.h4
