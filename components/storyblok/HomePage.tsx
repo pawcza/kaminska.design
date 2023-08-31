@@ -3,7 +3,8 @@ import { storyblokEditable } from '@storyblok/react/rsc';
 import { m } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 
-import Mousey from '@/components/Mousey';
+import Image from '@/components/Image/Image';
+import Mousey from '@/components/Mousey/Mousey';
 
 const HomePage = ({ blok }) => {
   const router = useRouter();
@@ -54,7 +55,7 @@ const HomePage = ({ blok }) => {
       </section>
       <section
         id="projects-section"
-        className="w-screen h-screen grid gap-4 lg:gap-16 p-4 grid-cols-1 md:grid-cols-2 justify-items-center content-center"
+        className="w-screen h-screen grid gap-4 lg:gap-16 p-4 grid-cols-1 md:grid-cols-2 lg:justify-items-center content-center"
       >
         {projects.map(({ content, uuid, slug }, i) => {
           const { thumbnail, thumbTitle, thumbDesc } = content;
@@ -70,13 +71,21 @@ const HomePage = ({ blok }) => {
             >
               <div
                 style={{ backgroundImage: `url(${thumbnail.filename})` }}
-                className="h-full w-32 md:w-64 bg-no-repeat bg-cover relative grayscale hover:grayscale-0"
+                className="h-full flex-shrink-0 w-32 md:w-64 bg-no-repeat bg-cover relative grayscale hover:grayscale-0"
               >
-                <span className="text-2xl lg:text-8xl absolute bottom-0 right-2 lg:-bottom-8 lg:-right-10 italic text-white md:text-black lg:font-thin">
-                  #0{i + 1}
-                </span>
+                <Image
+                  key={thumbnail.id}
+                  src={thumbnail.filename}
+                  alt={thumbnail.alt}
+                  fullHeight
+                  data64Blur={thumbnail.data64Blur}
+                >
+                  <span className="text-2xl lg:text-8xl absolute bottom-0 right-2 lg:-bottom-8 lg:-right-10 italic text-white md:text-black lg:font-thin">
+                    #0{i + 1}
+                  </span>
+                </Image>
               </div>
-              <div className="pl-2 md:pl-4">
+              <div className="pl-2 md:pl-4 flex-grow">
                 <p className="text-xl -ml-4 pl-4 lg:text-4xl border-black border-b-2 pb-2">
                   {thumbTitle}
                 </p>

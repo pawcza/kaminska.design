@@ -3,7 +3,7 @@ import { storyblokEditable } from '@storyblok/react/rsc';
 import { m } from 'framer-motion';
 
 import Image from '@/components/Image/Image';
-import Link from '@/components/Link';
+import Link from '@/components/Link/Link';
 
 const Project = ({ blok }) => {
   const {
@@ -20,10 +20,10 @@ const Project = ({ blok }) => {
     <>
       <section
         {...storyblokEditable(blok)}
-        className="w-screen mt-[3rem] md:mt-0 min-h-[calc(100vh-42px)] h-screen flex md:flex-row flex-col relative"
+        className="w-screen mt-[3rem] md:mt-0 h-[calc(100vh-3rem)] md:h-screen flex md:flex-row flex-col relative"
       >
         <m.div
-          className="h-full md:w-1/3 md:min-w-[500px] grow-0 relative"
+          className="max-h-[400px] md:max-h-[initial] h-full md:w-1/3 md:min-w-[500px] grow-0 relative"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -43,7 +43,7 @@ const Project = ({ blok }) => {
         </m.div>
         <div className="p-8 flex flex-col justify-between relative mt-auto md:mt-0">
           <m.div
-            className="fixed h-12 md:relative top-0 left-0 pl-8 md:-ml-8 z-50 border-b-2 border-black py-2 cursor-pointer w-full md:w-fit backdrop-blur bg-[rgba(255,255,255,.5)]"
+            className="fixed h-12 md:relative top-0 left-0 pl-8 md:-ml-8 z-50 border-b-2 border-black py-2 cursor-pointer w-full md:w-fit backdrop-grayscale bg-[rgba(255,255,255,.75)]"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.1 }}
@@ -61,7 +61,9 @@ const Project = ({ blok }) => {
             transition={{ delay: 0.3 }}
             viewport={{ once: true }}
           >
-            <h1 className="text-2xl md:text-4xl font-light">{title}</h1>
+            <h1 className="text-2xl md:text-4xl font-light border-t-2 py-2 -mt-2 border-t-black">
+              {title}
+            </h1>
             <p className="p-4 -ml-4 text-md md:text-xl font-light text-gray-800 bg-white max-w-xl">
               {shortDesc}
             </p>
@@ -70,7 +72,7 @@ const Project = ({ blok }) => {
       </section>
       <section
         id="project-details"
-        className="pt-16 md:pt-0 w-screen p-4 flex md:flex-row flex-col justify-center items-center relative max-w-7xl m-auto"
+        className="w-screen p-4 flex md:flex-row flex-col justify-center items-center relative max-w-7xl m-auto"
       >
         <div className="h-auto w-1/2 shrink-0 relative">
           <Image

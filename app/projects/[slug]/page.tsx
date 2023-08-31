@@ -1,4 +1,4 @@
-import { getBase64ImageUrl } from '@/helpers/images';
+import { getBase64ImageUrl, getBasedImages } from '@/helpers/images';
 import {
   ISbStoriesParams,
   StoryblokClient,
@@ -13,21 +13,6 @@ async function getData(slug: string) {
   return storyblokApi.get(`cdn/stories/projects/${slug}`, sbParams);
 }
 
-async function getImages(gallery: []) {
-  return await Promise.all(
-    gallery.map(async (item: unknown & { filename: string }) => {
-      const data64Blur = await getBase64ImageUrl(
-        `${item.filename}/m/100x0/filters:blur(50):quality(30)`,
-      );
-
-      return {
-        data64Blur,
-        ...item,
-      };
-    }),
-  );
-}
-
 export default async function Project({
   params,
 }: {
@@ -35,13 +20,13 @@ export default async function Project({
 }) {
   const { slug } = params;
   const { data } = await getData(slug);
-  const { story } = data;
-  const gallery = await getImages(story.content.gallery);
-  const mainImage = story.content.mainImage;
+  const { story: originalStory } = data;
+  const gallery = await getBasedImages(originalStory.content.gallery);
+  const mainImage = originalStory.content.mainImage;
   const appendedStory = {
-    ...story,
+    ...originalStory,
     content: {
-      ...story.content,
+      ...originalStory.content,
       gallery,
       mainImage: {
         ...mainImage,

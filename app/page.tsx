@@ -1,3 +1,4 @@
+import { getBasedImages } from '@/helpers/images';
 import {
   ISbStoriesParams,
   StoryblokClient,
@@ -17,13 +18,25 @@ async function getData() {
 
 export default async function Home() {
   const { data } = await getData();
-
-  return (
-    <>
-      {/*<h1>Story: {data.story.id}</h1>*/}
-      <StoryblokStory story={data.story} />
-    </>
+  const { story: originalStory } = data;
+  const projectThumbnails = originalStory.content.projects.map(
+    (p) => p.content.thumbnail,
   );
+  const basedThumbnails = await getBasedImages(projectThumbnails);
+  const projects = originalStory.content.projects.map((project, i) => ({
+    ...project,
+    content: { ...project.content, thumbnail: basedThumbnails[i] },
+  }));
+
+  const story = {
+    ...originalStory,
+    content: {
+      ...originalStory.content,
+      projects,
+    },
+  };
+
+  return <StoryblokStory story={story} />;
 }
 
 // Revalidate every request to avoid local caching, remove before going to prod

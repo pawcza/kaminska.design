@@ -105,7 +105,7 @@ const ImageInsides: React.FC<
     fit = 'contain',
   } = props;
   return (
-    <>
+    <div className="overflow-hidden">
       <NextImage
         key={key}
         alt={alt || ''}
@@ -115,7 +115,7 @@ const ImageInsides: React.FC<
         height={0}
         placeholder={data64Blur ? 'blur' : 'empty'}
         className={`bg-transparent transition duration-300 w-auto ${
-          loaded ? 'scale-100 bg-gray-400 blur-0' : 'scale-120 blur-2xl'
+          loaded ? 'scale-100 bg-gray-400 blur-0' : 'scale-120 blur-md'
         } ${open ? 'max-w-[calc(100%-4rem)] max-h-[calc(100%-4rem)]' : ''} ${
           fullHeight ? 'h-full w-full' : 'h-auto'
         } `}
@@ -126,6 +126,6 @@ const ImageInsides: React.FC<
         }}
       />
       {children}
-    </>
+    </div>
   );
 };
