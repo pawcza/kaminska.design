@@ -12,15 +12,16 @@ body {
 
 .gotop {
   overflow: visible;
-  stroke: #000;
-  stroke-width: 4;
-  stroke-linejoin: round;
-  stroke-linecap: round;
   position: fixed;
   right: 1em;
   bottom: 1em;
   z-index: 40;
-  width: 64px;
-  height: 64px;
   cursor: pointer;
+}
+
+.svg-stroke {
+  stroke: #000;
+  stroke-width: 4;
+  stroke-linejoin: round;
+  stroke-linecap: round;
 }

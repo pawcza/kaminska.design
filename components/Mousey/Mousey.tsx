@@ -1,21 +1,37 @@
 import { m } from 'framer-motion';
 
-import './mousey.css';
+const variants = {
+  initial: {
+    pathLength: 0,
+    pathOffset: 1,
+  },
+  animate: {
+    pathLength: 1,
+    pathOffset: 0.5,
+  },
+};
 
-const Mousey = ({ onClick, delay = 0 }) => {
+const Mousey = ({ onClick }) => {
   return (
-    <m.div
-      className="scroll-downs"
+    <m.svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 80 80"
+      className="w-8 md:w-16 svg-stroke absolute left-1/2 -translate-x-1/2 bottom-16 cursor-pointer -rotate-45"
       onClick={onClick}
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ delay }}
-      viewport={{ once: true }}
     >
-      <div className="mousey">
-        <div className="scroller"></div>
-      </div>
-    </m.div>
+      <m.path
+        d="M 80 0 L 80 80 L 0 80 L 0 0 H 0 H 80"
+        variants={variants}
+        className="fill-white"
+        initial="initial"
+        transition={{
+          default: { duration: 0.5, ease: 'easeInOut' },
+          delay: 1,
+        }}
+        animate="animate"
+        viewport={{ once: true }}
+      />
+    </m.svg>
   );
 };
 

@@ -51,11 +51,11 @@ const HomePage = ({ blok }) => {
             </m.h4>
           ))}
         </div>
-        <Mousey onClick={handleOnClick} delay={1} />
+        <Mousey onClick={handleOnClick} />
       </section>
       <section
         id="projects-section"
-        className="w-screen h-screen grid gap-4 lg:gap-16 p-4 grid-cols-1 md:grid-cols-2 lg:justify-items-center content-center"
+        className="w-screen h-screen grid gap-8 lg:gap-16 p-4 grid-cols-1 md:grid-cols-2 lg:justify-items-center content-center"
       >
         {projects.map(({ content, uuid, slug }, i) => {
           const { thumbnail, thumbTitle, thumbDesc } = content;
@@ -63,15 +63,23 @@ const HomePage = ({ blok }) => {
             <m.div
               key={uuid}
               className="h-32 lg:h-64 flex cursor-pointer"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: i / 10 }}
+              initial={{ y: 10, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{
+                delay: i / 10,
+                default: { duration: 0.3, ease: 'easeInOut' },
+              }}
               onClick={() => router.push(`/projects/${slug}`)}
               viewport={{ once: true }}
             >
-              <div
-                style={{ backgroundImage: `url(${thumbnail.filename})` }}
-                className="h-full flex-shrink-0 w-32 md:w-64 bg-no-repeat bg-cover relative grayscale hover:grayscale-0"
+              <m.div
+                className="h-full flex-shrink-0 w-32 md:w-64 relative grayscale hover:grayscale-0 outline-2 outline-black outline outline-offset-8"
+                whileHover={{
+                  transition: {
+                    duration: 3,
+                    repeat: Infinity,
+                  },
+                }}
               >
                 <Image
                   key={thumbnail.id}
@@ -84,9 +92,9 @@ const HomePage = ({ blok }) => {
                     #0{i + 1}
                   </span>
                 </Image>
-              </div>
-              <div className="pl-2 md:pl-4 flex-grow">
-                <p className="text-xl -ml-4 pl-4 lg:text-4xl border-black border-b-2 pb-2">
+              </m.div>
+              <div className="pl-4 flex-grow">
+                <p className="text-xl -ml-2 pl-2 lg:text-4xl border-black border-b-2 pb-2">
                   {thumbTitle}
                 </p>
                 <p className="text-xs lg:text-lg uppercase text-gray-800 font-light pt-2">

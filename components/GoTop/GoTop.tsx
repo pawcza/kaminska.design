@@ -28,7 +28,7 @@ export const GoTop = ({ visible }) => {
         <m.svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 160 160"
-          className="gotop"
+          className="w-12 md:w-16 gotop svg-stroke"
           onClick={() => window.scrollTo({ behavior: 'smooth', top: 0 })}
         >
           <m.path

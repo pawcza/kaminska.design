@@ -72,7 +72,7 @@ const Project = ({ blok }) => {
       </section>
       <section
         id="project-details"
-        className="w-screen p-4 flex md:flex-row flex-col justify-center items-center relative max-w-7xl m-auto"
+        className="w-screen p-4 flex md:flex-row flex-col justify-center items-center relative max-w-6xl m-auto"
       >
         <div className="h-auto w-1/2 shrink-0 relative">
           <Image

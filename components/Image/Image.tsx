@@ -59,6 +59,7 @@ const Image: React.FC<Props> = (props) => {
           {...props}
           zoom
           handleClick={handleClick}
+          handleClose={() => setOpen(false)}
           handleLoadingComplete={handleLoadingComplete}
           loaded={loaded}
           open={open}
@@ -84,6 +85,7 @@ const ImageInsides: React.FC<
   Props & {
     handleLoadingComplete: (image: HTMLImageElement) => void;
     handleClick?: (open: boolean) => void;
+    handleClose?: () => void;
     loaded: boolean;
     open?: boolean;
     zoom?: boolean;
@@ -97,6 +99,7 @@ const ImageInsides: React.FC<
     data64Blur,
     loaded,
     handleClick,
+    handleClose,
     handleLoadingComplete,
     fullHeight,
     children,
@@ -105,7 +108,19 @@ const ImageInsides: React.FC<
     fit = 'contain',
   } = props;
   return (
-    <div className="overflow-hidden">
+    <div
+      className={`overflow-hidden h-full flex justify-center align-center  ${
+        open ? 'max-w-[calc(100%-4rem)] max-h-[calc(100%-4rem)]' : ''
+      }`}
+    >
+      {zoom && open && (
+        <m.div
+          onClick={handleClose}
+          className="absolute top-8 right-8 text-5xl font-black text-white z-50 cursor-pointer drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]"
+        >
+          X
+        </m.div>
+      )}
       <NextImage
         key={key}
         alt={alt || ''}
@@ -116,9 +131,7 @@ const ImageInsides: React.FC<
         placeholder={data64Blur ? 'blur' : 'empty'}
         className={`bg-transparent transition duration-300 w-auto ${
           loaded ? 'scale-100 bg-gray-400 blur-0' : 'scale-120 blur-md'
-        } ${open ? 'max-w-[calc(100%-4rem)] max-h-[calc(100%-4rem)]' : ''} ${
-          fullHeight ? 'h-full w-full' : 'h-auto'
-        } `}
+        } ${fullHeight ? 'h-full w-full' : 'h-auto'} `}
         onLoadingComplete={handleLoadingComplete}
         blurDataURL={`data:image/${data64Blur}`}
         style={{
