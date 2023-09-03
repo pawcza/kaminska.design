@@ -20,10 +20,10 @@ const Project = ({ blok }) => {
     <>
       <section
         {...storyblokEditable(blok)}
-        className="w-screen mt-[3rem] md:mt-0 h-[calc(100vh-3rem)] md:h-screen flex md:flex-row flex-col relative"
+        className="w-screen mt-[3rem] md:mt-0 md:h-screen flex md:flex-row flex-col relative"
       >
         <m.div
-          className="max-h-[400px] md:max-h-[initial] h-full md:w-1/3 md:min-w-[500px] grow-0 relative"
+          className="h-full md:w-1/3 md:min-w-[500px] grow-0 relative"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -41,7 +41,7 @@ const Project = ({ blok }) => {
             </span>
           </Image>
         </m.div>
-        <div className="p-8 flex flex-col justify-between relative mt-auto md:mt-0">
+        <div className="p-4 md:p-8 flex flex-col justify-between relative mt-auto md:mt-0">
           <m.div
             className="fixed h-12 md:relative top-0 left-0 pl-8 md:-ml-8 z-50 border-b-2 border-black py-2 cursor-pointer w-full md:w-fit backdrop-grayscale bg-[rgba(255,255,255,.75)]"
             initial={{ opacity: 0 }}
@@ -61,7 +61,7 @@ const Project = ({ blok }) => {
             transition={{ delay: 0.3 }}
             viewport={{ once: true }}
           >
-            <h1 className="text-2xl md:text-4xl font-light border-t-2 py-2 -mt-2 border-t-black">
+            <h1 className="text-2xl md:text-4xl font-light border-t-2 py-2 md:-mt-2 border-t-black">
               {title}
             </h1>
             <p className="p-4 -ml-4 text-md md:text-xl font-light text-gray-800 bg-white max-w-xl">
@@ -84,12 +84,12 @@ const Project = ({ blok }) => {
           />
         </div>
         <div className="md:p-4 h-full md:min-h-[600px] flex flex-col justify-center">
-          <p className="text-md md:text-xl font-light text-gray-800 bg-white p-4">
+          <p className="text-md md:text-xl font-light text-gray-800 bg-white md:p-4">
             {description}
           </p>
         </div>
       </section>
-      <section className="p-8 grid gap-8 grid-cols-2 justify-items-center max-w-5xl m-auto">
+      <section className="p-4 md:p-8 grid gap-4 md:gap-8 grid-cols-2 justify-items-center max-w-5xl m-auto">
         {gallery.map(({ filename, id, alt, data64Blur }) => (
           <Image
             src={filename}

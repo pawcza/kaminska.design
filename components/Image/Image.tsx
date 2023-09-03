@@ -109,18 +109,10 @@ const ImageInsides: React.FC<
   } = props;
   return (
     <div
-      className={`overflow-hidden h-full flex justify-center align-center  ${
-        open ? 'max-w-[calc(100%-4rem)] max-h-[calc(100%-4rem)]' : ''
+      className={`overflow-hidden flex justify-center items-center h-full w-full  ${
+        open ? 'max-w-[calc(100%-2rem)] max-h-[calc(100%-2rem)]' : ''
       }`}
     >
-      {zoom && open && (
-        <m.div
-          onClick={handleClose}
-          className="absolute top-8 right-8 text-5xl font-black text-white z-50 cursor-pointer drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]"
-        >
-          X
-        </m.div>
-      )}
       <NextImage
         key={key}
         alt={alt || ''}
@@ -128,15 +120,14 @@ const ImageInsides: React.FC<
         src={`${src}/m/filters:quality(75)`}
         width={0}
         height={0}
+        sizes="100vw"
         placeholder={data64Blur ? 'blur' : 'empty'}
-        className={`bg-transparent transition duration-300 w-auto ${
+        className={`bg-transparent transition duration-300 w-fit max-h-full ${
           loaded ? 'scale-100 bg-gray-400 blur-0' : 'scale-120 blur-md'
-        } ${fullHeight ? 'h-full w-full' : 'h-auto'} `}
+        } ${fullHeight ? 'h-full' : ''} ${zoom && open && 'h-fit'}`}
         onLoadingComplete={handleLoadingComplete}
         blurDataURL={`data:image/${data64Blur}`}
-        style={{
-          objectFit: fit,
-        }}
+        style={{ objectFit: fit }}
       />
       {children}
     </div>
