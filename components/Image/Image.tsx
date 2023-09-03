@@ -59,7 +59,6 @@ const Image: React.FC<Props> = (props) => {
           {...props}
           zoom
           handleClick={handleClick}
-          handleClose={() => setOpen(false)}
           handleLoadingComplete={handleLoadingComplete}
           loaded={loaded}
           open={open}
@@ -85,7 +84,6 @@ const ImageInsides: React.FC<
   Props & {
     handleLoadingComplete: (image: HTMLImageElement) => void;
     handleClick?: (open: boolean) => void;
-    handleClose?: () => void;
     loaded: boolean;
     open?: boolean;
     zoom?: boolean;
@@ -99,7 +97,6 @@ const ImageInsides: React.FC<
     data64Blur,
     loaded,
     handleClick,
-    handleClose,
     handleLoadingComplete,
     fullHeight,
     children,
