@@ -35,22 +35,20 @@ const Image: React.FC<Props> = (props) => {
       {open && (
         <div style={{ height: loadedSize.height, width: loadedSize.width }} />
       )}
-      <div
+      <m.div
         className={`${
           open
             ? 'flex justify-center items-center fixed top-0 left-0 z-50 h-full w-full'
             : 'cursor-zoom-in relative'
         }`}
+        layout
       >
         <AnimatePresence initial={false}>
           {open && (
-            <m.div
+            <div
               key="shade"
-              className="h-full w-full bg-black fixed left-0 z-0 cursor-zoom-out"
+              className="h-full w-full bg-black fixed left-0 z-0 cursor-zoom-out opacity-50"
               onClick={() => setOpen(false)}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.5 }}
-              exit={{ opacity: 0 }}
             />
           )}
         </AnimatePresence>
@@ -65,7 +63,7 @@ const Image: React.FC<Props> = (props) => {
           fullHeight={props.fullHeight}
           fit={props.fit}
         />
-      </div>
+      </m.div>
     </>
   ) : (
     <ImageInsides
@@ -119,7 +117,7 @@ const ImageInsides: React.FC<
         height={0}
         sizes="100vw"
         placeholder={data64Blur ? 'blur' : 'empty'}
-        className={`bg-transparent transition duration-300 w-fit max-h-full ${
+        className={`transition duration-300 w-auto max-h-full ${
           loaded ? 'scale-100 bg-gray-400 blur-0' : 'scale-120 blur-md'
         } ${fullHeight ? 'h-full' : ''} ${zoom && open && 'h-fit'}`}
         onLoadingComplete={handleLoadingComplete}

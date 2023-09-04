@@ -7,7 +7,7 @@ const variants = {
   },
   animate: {
     pathLength: 1,
-    pathOffset: 0.5,
+    pathOffset: 1.5,
   },
 };
 
@@ -16,7 +16,7 @@ const Mousey = ({ onClick }) => {
     <m.svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 80 80"
-      className="w-8 md:w-16 svg-stroke absolute left-1/2 -translate-x-1/2 bottom-16 cursor-pointer -rotate-45"
+      className="w-6 md:w-12 svg-stroke absolute left-1/2 -translate-x-1/2 bottom-16 cursor-pointer rotate-[135deg]"
       onClick={onClick}
     >
       <m.path

@@ -10,18 +10,9 @@ body {
   background-attachment: fixed;
 }
 
-.gotop {
-  overflow: visible;
-  position: fixed;
-  right: 1em;
-  bottom: 1em;
-  z-index: 40;
-  cursor: pointer;
-}
-
 .svg-stroke {
   stroke: #000;
-  stroke-width: 4;
+  stroke-width: 8;
   stroke-linejoin: round;
   stroke-linecap: round;
 }

@@ -73,7 +73,11 @@ const HomePage = ({ blok }) => {
               viewport={{ once: true }}
             >
               <m.div
-                className="h-full flex-shrink-0 w-32 md:w-64 relative grayscale hover:grayscale-0 outline-2 outline-black outline outline-offset-8"
+                className="h-full flex-shrink-0 w-32 md:w-64 relative grayscale hover:grayscale-0 border-l-2 pb-2 md:pb-4 border-b-2 pl-2 md:pl-4 border-black"
+                style={{
+                  clipPath:
+                    'polygon(30% 0, 100% 0, 100% 70%, 70% 100%, 0 100%, 0 30%);',
+                }}
                 whileHover={{
                   transition: {
                     duration: 3,
@@ -86,18 +90,17 @@ const HomePage = ({ blok }) => {
                   src={thumbnail.filename}
                   alt={thumbnail.alt}
                   fullHeight
+                  fit={'cover'}
                   data64Blur={thumbnail.data64Blur}
-                >
-                  <span className="text-2xl lg:text-8xl absolute bottom-0 right-2 lg:-bottom-8 lg:-right-10 italic text-white md:text-black lg:font-thin">
-                    #0{i + 1}
-                  </span>
-                </Image>
+                />
               </m.div>
-              <div className="pl-4 flex-grow">
-                <p className="text-xl -ml-2 pl-2 lg:text-4xl border-black border-b-2 pb-2">
-                  {thumbTitle}
+              <div className="pl-6 flex-grow">
+                <p className="text-xl -ml-2 lg:text-4xl border-black border-b-2 pb-2">
+                  {thumbTitle.split(' ').map((word, i) => (
+                    <span className={!(i % 2) ? '' : 'font-thin'}>{word} </span>
+                  ))}
                 </p>
-                <p className="text-xs lg:text-lg uppercase text-gray-800 font-light pt-2">
+                <p className="text-xs lg:text-lg text-gray-800 font-light pt-2 -ml-2">
                   {thumbDesc}
                 </p>
               </div>
