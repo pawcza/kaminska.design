@@ -97,7 +97,12 @@ const HomePage = ({ blok }) => {
               <div className="pl-6 flex-grow">
                 <p className="text-xl -ml-2 lg:text-4xl border-black border-b-2 pb-2">
                   {thumbTitle.split(' ').map((word, i) => (
-                    <span className={!(i % 2) ? '' : 'font-thin'}>{word} </span>
+                    <span
+                      key={`thumb-word-${i}`}
+                      className={!(i % 2) ? '' : 'font-thin'}
+                    >
+                      {word}{' '}
+                    </span>
                   ))}
                 </p>
                 <p className="text-xs lg:text-lg text-gray-800 font-light pt-2 -ml-2">
