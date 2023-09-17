@@ -38,6 +38,3 @@ export default async function Home() {
 
   return <StoryblokStory story={story} />;
 }
-
-// Revalidate every request to avoid local caching, remove before going to prod
-export const revalidate = 0;

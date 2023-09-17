@@ -22,7 +22,7 @@ export default async function Project({
   const { data } = await getData(slug);
   const { story: originalStory } = data;
   const gallery = await getBasedImages(originalStory.content.gallery);
-  const mainImage = originalStory.content.mainImage;
+  const mainImage = await originalStory.content.mainImage;
   const appendedStory = {
     ...originalStory,
     content: {
@@ -30,9 +30,11 @@ export default async function Project({
       gallery,
       mainImage: {
         ...mainImage,
-        data64Blur: await getBase64ImageUrl(
-          `${mainImage.filename}/m/100x0/filters:blur(50):quality(30)`,
-        ),
+        data64Blur: mainImage?.filename
+          ? await getBase64ImageUrl(
+              `${mainImage.filename}/m/100x0/filters:blur(50):quality(30)`,
+            )
+          : '',
       },
     },
   };
@@ -55,6 +57,3 @@ export async function generateStaticParams() {
     slug: story.slug,
   }));
 }
-
-// Revalidate every request to avoid local caching, remove before going to prod
-export const revalidate = 0;
