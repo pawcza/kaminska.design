@@ -38,3 +38,5 @@ export default async function Home() {
 
   return <StoryblokStory story={story} />;
 }
+
+export const revalidate = 60;

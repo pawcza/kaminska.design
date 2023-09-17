@@ -57,3 +57,5 @@ export async function generateStaticParams() {
     slug: story.slug,
   }));
 }
+
+export const revalidate = 60;
