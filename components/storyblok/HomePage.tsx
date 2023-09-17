@@ -57,8 +57,11 @@ const HomePage = ({ blok }) => {
         id="projects-section"
         className="w-screen h-screen grid gap-8 lg:gap-16 p-4 grid-cols-1 md:grid-cols-2 lg:justify-items-center content-center"
       >
-        {projects.map(({ content, uuid, slug }, i) => {
+        {projects?.map(({ content, uuid, slug }, i) => {
+          if (!content) return;
+
           const { thumbnail, thumbTitle, thumbDesc } = content;
+
           return (
             <m.div
               key={uuid}
