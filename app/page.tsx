@@ -15,7 +15,6 @@ async function getData() {
   const storyblokApi: StoryblokClient = getStoryblokApi();
   return storyblokApi.get('cdn/stories/home', sbParams);
 }
-
 export default async function Home() {
   const { data } = await getData();
   const { story: originalStory } = data;
