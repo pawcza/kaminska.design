@@ -52,7 +52,7 @@ const Project = ({ blok }) => {
             <Link
               slug={'/#projects-section'}
               arrowDirection="left"
-              text="Back to all projects"
+              text="Wszystkie projekty"
             />
           </m.div>
           <m.div
@@ -84,12 +84,12 @@ const Project = ({ blok }) => {
           />
         </div>
         <div className="md:p-4 h-full md:min-h-[600px] flex flex-col justify-center">
-          <p className="text-md md:text-xl font-light text-gray-800 bg-white md:p-4">
+          <p className="text-lg font-light text-gray-800 bg-white md:p-4 leading-8">
             {description}
           </p>
         </div>
       </section>
-      <section className="p-4 md:p-8 grid gap-4 md:gap-8 grid-cols-2 justify-items-center max-w-5xl m-auto">
+      <section className="p-4 md:p-8 grid gap-y-16 gap-x-4 grid-cols-2 justify-items-center max-w-5xl m-auto">
         <LayoutGroup>
           {gallery.map(({ filename, id, alt, data64Blur }) => (
             <Image

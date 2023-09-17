@@ -120,9 +120,11 @@ const HomePage = ({ blok }) => {
         id="contact-section"
         className="w-screen h-screen flex justify-center items-center flex-col"
       >
-        <span>{contactIntro}</span>
+        <span className="font-bold text-2xl md:text-4xl pb-2 mb-2 border-b-2 border-black px-4">
+          {contactIntro}
+        </span>
         <m.a
-          className="italic font-light text-2xl md:text-4xl md:p-16 bg-white text-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]"
+          className="font-light text-lg md:text-xl bg-white text-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]"
           href={`mailto:${contactEmail}`}
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
