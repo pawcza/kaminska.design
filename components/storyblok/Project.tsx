@@ -6,21 +6,13 @@ import Image from '@/components/Image/Image';
 import Link from '@/components/Link/Link';
 
 const Project = ({ blok }) => {
-  const {
-    mainImage,
-    descImage,
-    description,
-    gallery,
-    shortDesc,
-    title,
-    number,
-  } = blok;
+  const { mainImage, descImage, description, gallery, shortDesc, title } = blok;
 
   return (
     <>
       <section
         {...storyblokEditable(blok)}
-        className="w-screen md:h-screen flex md:flex-row flex-col relative"
+        className="w-screen md:h-[85vh] flex md:flex-row flex-col relative"
       >
         <m.div
           className="h-full md:w-1/3 md:min-w-[500px] grow-0 relative"
@@ -35,13 +27,9 @@ const Project = ({ blok }) => {
             fullHeight
             data64Blur={mainImage.data64Blur}
             fit="cover"
-          >
-            <span className="text-4xl md:text-6xl text-white italic absolute right-8 bottom-2 [text-shadow:_0_1px_0_rgb(0_0_0_/_40%)] font-black">
-              #0{number}
-            </span>
-          </Image>
+          />
         </m.div>
-        <div className="p-4 md:p-8 flex flex-col justify-between relative mt-auto md:mt-0">
+        <div className="p-4 md:p-8 flex flex-col justify-center relative mt-auto md:mt-0">
           <m.div
             className="fixed h-12 md:relative top-0 left-0 pl-8 md:-ml-8 z-50 py-2 cursor-pointer w-full md:w-fit backdrop-grayscale bg-[rgba(255,255,255,.75)]"
             initial={{ opacity: 0 }}
@@ -61,9 +49,18 @@ const Project = ({ blok }) => {
             transition={{ delay: 0.3 }}
             viewport={{ once: true }}
           >
-            <h1 className="text-2xl md:text-4xl font-light border-t-2 py-2 md:-mt-2 border-t-black">
-              {title}
-            </h1>
+            {title.split(' ').map((word, i) => (
+              <span
+                key={`title-word-${i}`}
+                className={
+                  !(i % 2)
+                    ? 'text-2xl md:text-4xl font-light border-t-2 py-2 md:-mt-2 border-t-black'
+                    : 'text-2xl md:text-4xl font-light border-t-2 py-2 md:-mt-2 border-t-black font-thin'
+                }
+              >
+                {word}{' '}
+              </span>
+            ))}
             <p className="p-4 -ml-4 text-md md:text-xl font-light text-gray-800 bg-white max-w-xl">
               {shortDesc}
             </p>
@@ -89,7 +86,7 @@ const Project = ({ blok }) => {
           </p>
         </div>
       </section>
-      <section className="p-4 md:p-8 grid gap-y-16 gap-x-4 grid-cols-2 justify-items-center max-w-5xl m-auto">
+      <section className="p-4 md:p-8 grid gap-8 grid-cols-2 justify-items-center max-w-7xl m-auto">
         <LayoutGroup>
           {gallery.map(({ filename, id, alt, data64Blur }) => (
             <Image

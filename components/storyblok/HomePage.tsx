@@ -55,7 +55,7 @@ const HomePage = ({ blok }) => {
       </section>
       <section
         id="projects-section"
-        className="w-screen h-screen grid gap-8 lg:gap-16 p-4 grid-cols-1 md:grid-cols-2 lg:justify-items-center content-center"
+        className="w-screen h-screen grid gap-8 lg:gap-32 p-4 md:px-32 grid-cols-1 md:grid-cols-2 lg:justify-items-center content-center"
       >
         {projects?.map(({ content, uuid, slug }, i) => {
           if (!content) return;
@@ -65,7 +65,7 @@ const HomePage = ({ blok }) => {
           return (
             <m.div
               key={uuid}
-              className="h-32 lg:h-64 flex cursor-pointer"
+              className="h-32 lg:h-64 flex cursor-pointer w-full max-w-xl"
               initial={{ y: 10, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               transition={{
@@ -76,11 +76,7 @@ const HomePage = ({ blok }) => {
               viewport={{ once: true }}
             >
               <m.div
-                className="h-full flex-shrink-0 w-32 md:w-64 relative grayscale hover:grayscale-0 border-l-2 pb-2 md:pb-4 border-b-2 pl-2 md:pl-4 border-black"
-                style={{
-                  clipPath:
-                    'polygon(30% 0, 100% 0, 100% 70%, 70% 100%, 0 100%, 0 30%);',
-                }}
+                className="h-full flex-shrink-0 w-32 md:w-64 relative grayscale hover:grayscale-0 border-l-2 pb-2 md:pb-4 border-b-2 pl-2 md:pl-4 border-black rounded-bl-full"
                 whileHover={{
                   transition: {
                     duration: 3,
