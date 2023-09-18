@@ -27,6 +27,7 @@ const Project = ({ blok }) => {
             fullHeight
             data64Blur={mainImage.data64Blur}
             fit="cover"
+            className="bg-fixed"
           />
         </m.div>
         <div className="p-4 md:p-8 flex flex-col justify-center relative mt-auto md:mt-0">
@@ -52,16 +53,14 @@ const Project = ({ blok }) => {
             {title.split(' ').map((word, i) => (
               <span
                 key={`title-word-${i}`}
-                className={
-                  !(i % 2)
-                    ? 'text-2xl md:text-4xl font-light border-t-2 py-2 md:-mt-2 border-t-black'
-                    : 'text-2xl md:text-4xl font-light border-t-2 py-2 md:-mt-2 border-t-black font-thin'
-                }
+                className={`text-2xl md:text-4xl font-light border-t-2 py-2 md:-mt-2 border-t-black ${
+                  !(i % 2) ? '' : 'font-thin'
+                }`}
               >
                 {word}{' '}
               </span>
             ))}
-            <p className="p-4 -ml-4 text-md md:text-xl font-light text-gray-800 bg-white max-w-xl">
+            <p className="px-4 md:p-4 -ml-4 text-md md:text-xl font-light text-gray-800 bg-white max-w-xl">
               {shortDesc}
             </p>
           </m.div>
@@ -69,9 +68,9 @@ const Project = ({ blok }) => {
       </section>
       <section
         id="project-details"
-        className="w-screen p-4 flex md:flex-row flex-col justify-center items-center relative max-w-6xl m-auto"
+        className="w-screen p-4 flex md:flex-row flex-col-reverse justify-center items-center relative max-w-7xl m-auto"
       >
-        <div className="h-auto w-1/2 shrink-0 relative">
+        <div className="h-auto mt-8 md:mt-0 w-full md:w-1/2 shrink-0 relative">
           <Image
             src={descImage.filename}
             key={descImage.id}
@@ -81,12 +80,12 @@ const Project = ({ blok }) => {
           />
         </div>
         <div className="md:p-4 h-full md:min-h-[600px] flex flex-col justify-center">
-          <p className="text-lg font-light text-gray-800 bg-white md:p-4 leading-8">
+          <p className="text-md md:text-lg font-light text-gray-800 bg-white md:p-4 leading-8">
             {description}
           </p>
         </div>
       </section>
-      <section className="p-4 md:p-8 grid gap-8 grid-cols-2 justify-items-center max-w-7xl m-auto">
+      <section className="p-4 md:p-8 grid gap-4 md:gap-8 grid-cols-2 justify-items-center auto-rows-auto max-w-7xl m-auto">
         <LayoutGroup>
           {gallery.map(({ filename, id, alt, data64Blur }) => (
             <Image

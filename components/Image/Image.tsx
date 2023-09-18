@@ -106,7 +106,7 @@ const ImageInsides: React.FC<
     <div
       className={`overflow-hidden flex justify-center items-center h-full w-full  ${
         open ? 'max-w-[calc(100%-2rem)] max-h-[calc(100%-2rem)]' : ''
-      }`}
+      } ${props.className}`}
     >
       <NextImage
         key={key}

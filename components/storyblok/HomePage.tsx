@@ -29,7 +29,7 @@ const HomePage = ({ blok }) => {
           {thinIntroText.split('').map((el, i) => (
             <m.h4
               key={`letter-thin-${el}-${i}`}
-              className="text-4xl lg:text-6xl"
+              className="text-4xl lg:text-6xl pt-4"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ delay: i / 10 }}
@@ -98,7 +98,11 @@ const HomePage = ({ blok }) => {
                   {thumbTitle.split(' ').map((word, i) => (
                     <span
                       key={`thumb-word-${i}`}
-                      className={!(i % 2) ? '' : 'font-thin'}
+                      className={
+                        !(i % 2)
+                          ? 'pb-2 backdrop-grayscale bg-[rgba(255,255,255,.75)]'
+                          : 'font-thin'
+                      }
                     >
                       {word}{' '}
                     </span>
@@ -116,7 +120,7 @@ const HomePage = ({ blok }) => {
         id="contact-section"
         className="w-screen h-screen flex justify-center items-center flex-col"
       >
-        <span className="font-bold text-2xl md:text-4xl pb-2 mb-2 border-b-2 border-black px-4">
+        <span className="font-bold text-2xl md:text-4xl pb-2 mb-2 border-b-2 border-black px-4 relative before:content-[''] before:bg-[rgba(255,255,255,.8)] before:w-full before:h-2 before:block before:absolute before:-bottom-1 before:left-1/8 before:w-1/2 before:absolute">
           {contactIntro}
         </span>
         <m.a

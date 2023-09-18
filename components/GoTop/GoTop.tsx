@@ -32,7 +32,7 @@ export const GoTop = ({ visible }) => {
     <AnimatePresence>
       {visible && (
         <m.div
-          className="p-4 fixed right-4 bottom-2 cursor-pointer z-50 -rotate-45 backdrop-grayscale bg-[rgba(255,255,255,.75)]"
+          className="p-4 fixed right-2 bottom-2 cursor-pointer -rotate-45 z-50 backdrop-grayscale bg-[rgba(255,255,255,.75)]"
           variants={outerVariants}
           initial="initial"
           animate="animate"
@@ -45,7 +45,7 @@ export const GoTop = ({ visible }) => {
           <m.svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 80 80"
-            className="w-6 md:w-12 svg-stroke -rotate-45 -mb-2"
+            className="w-6 md:w-12 svg-stroke -mb-2"
             onClick={() => window.scrollTo({ behavior: 'smooth', top: 0 })}
           >
             <m.path
