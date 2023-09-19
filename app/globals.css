@@ -2,17 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
+.body-background {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
   background: white;
   background-image: radial-gradient(#ebebeb 1px, white 2px, white 8px, #ebebeb 9px, white 10px, white 20px, #ebebeb 21px, white 22px, white 30px, #ebebeb 31px, white 32px, white 40px, #ebebeb 41px, transparent 0);
   background-size: 32px 32px;
-  background-position: -19px -19px;
-  background-attachment: fixed;
+  background-position: center;
+  mask-image: radial-gradient(transparent 60%, black);
 }
 
 .svg-stroke {
   stroke: #000;
-  stroke-width: 8;
-  stroke-linejoin: round;
-  stroke-linecap: round;
+  stroke-width: 4;
+  stroke-linejoin: bevel;
+  stroke-linecap: butt;
 }

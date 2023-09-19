@@ -7,7 +7,7 @@ const variants = {
   },
   animate: {
     pathLength: 1,
-    pathOffset: 0.5,
+    pathOffset: 2,
   },
 };
 
@@ -20,9 +20,9 @@ const Mousey = ({ onClick }) => {
       onClick={onClick}
     >
       <m.path
-        d="M 80 0 L 80 80 L 0 80 L 0 0 H 0 H 80"
+        d="M 80 0 L 40 40 L 0 0"
         variants={variants}
-        className="fill-white"
+        className="fill-transparent"
         initial="initial"
         transition={{
           default: { duration: 0.5, ease: 'easeInOut' },

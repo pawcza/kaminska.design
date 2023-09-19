@@ -47,7 +47,7 @@ const Image: React.FC<Props> = (props) => {
           {open && (
             <div
               key="shade"
-              className="h-full w-full bg-black fixed left-0 z-0 cursor-zoom-out opacity-50"
+              className="h-full w-full bg-black fixed left-0 z-0 cursor-zoom-out opacity-50 backdrop-invert"
               onClick={() => setOpen(false)}
             />
           )}
