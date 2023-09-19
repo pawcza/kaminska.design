@@ -3,7 +3,7 @@ import { storyblokEditable } from '@storyblok/react/rsc';
 import { m } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 
-import Image from '@/components/Image/Image';
+// import Image from '@/components/Image/Image';
 import Mousey from '@/components/Mousey/Mousey';
 
 const HomePage = ({ blok }) => {
