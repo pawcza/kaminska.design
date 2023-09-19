@@ -76,7 +76,7 @@ const HomePage = ({ blok }) => {
               viewport={{ once: true }}
             >
               <m.div
-                className="h-full flex-shrink-0 w-32 md:w-64 relative grayscale hover:grayscale-0 border-l-2 pb-2 md:pb-4 border-b-2 pl-2 md:pl-4 border-gray-950 rounded-bl-full"
+                className="h-full flex-shrink-0 w-32 md:w-64 relative bg-blend-multiply mix-blend-multiply grayscale hover:grayscale-0 border-l-2 pb-2 md:pb-4 border-b-2 pl-2 md:pl-4 border-gray-950"
                 whileHover={{
                   transition: {
                     duration: 3,
@@ -84,13 +84,17 @@ const HomePage = ({ blok }) => {
                   },
                 }}
               >
-                <Image
-                  key={thumbnail.id}
-                  src={thumbnail.filename}
-                  alt={thumbnail.alt}
-                  fullHeight
-                  fit={'cover'}
-                  data64Blur={thumbnail.data64Blur}
+                {/*<Image*/}
+                {/*  key={thumbnail.id}*/}
+                {/*  src={thumbnail.filename}*/}
+                {/*  alt={thumbnail.alt}*/}
+                {/*  fullHeight*/}
+                {/*  fit={'cover'}*/}
+                {/*  data64Blur={thumbnail.data64Blur}*/}
+                {/*/>*/}
+                <div
+                  style={{ backgroundImage: `url(${thumbnail.filename})` }}
+                  className="h-full w-full bg-cover bg-blend-multiply"
                 />
               </m.div>
               <div className="pl-6 flex-grow">

@@ -47,7 +47,7 @@ const Image: React.FC<Props> = (props) => {
           {open && (
             <div
               key="shade"
-              className="h-full w-full bg-black fixed left-0 z-0 cursor-zoom-out opacity-50 backdrop-invert"
+              className="h-full w-full bg-black fixed left-0 z-0 cursor-zoom-out opacity-50"
               onClick={() => setOpen(false)}
             />
           )}
@@ -104,7 +104,7 @@ const ImageInsides: React.FC<
   } = props;
   return (
     <div
-      className={`overflow-hidden flex justify-center items-center h-full w-full  ${
+      className={`overflow-hidden flex justify-center items-center h-full w-full ${
         open ? 'max-w-[calc(100%-2rem)] max-h-[calc(100%-2rem)]' : ''
       } ${props.className}`}
     >
