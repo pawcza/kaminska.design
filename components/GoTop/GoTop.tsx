@@ -7,7 +7,7 @@ const innerVariants = {
   },
   animate: {
     pathLength: 1,
-    pathOffset: 1.5,
+    pathOffset: 2,
   },
   exit: {
     pathLength: 0,
@@ -49,7 +49,7 @@ export const GoTop = ({ visible }) => {
             onClick={() => window.scrollTo({ behavior: 'smooth', top: 0 })}
           >
             <m.path
-              d="M 80 0 L 80 80 L 0 80 L 0 0 H 0 H 80"
+              d="M 80 40 L 40 0 L 0 40"
               variants={innerVariants}
               initial="initial"
               animate="animate"

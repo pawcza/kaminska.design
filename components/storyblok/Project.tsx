@@ -20,19 +20,23 @@ const Project = ({ blok }) => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          <Image
-            src={mainImage.filename}
-            key={mainImage.id}
-            alt={mainImage.alt}
-            fullHeight
-            data64Blur={mainImage.data64Blur}
-            fit="cover"
-            className="bg-fixed"
+          <div
+            style={{ backgroundImage: `url(${mainImage.filename})` }}
+            className="h-full w-[calc(100%-4rem)] bg-cover mix-blend-multiply min-h-[200px] m-4"
           />
+          {/*<Image*/}
+          {/*  src={mainImage.filename}*/}
+          {/*  key={mainImage.id}*/}
+          {/*  alt={mainImage.alt}*/}
+          {/*  fullHeight*/}
+          {/*  data64Blur={mainImage.data64Blur}*/}
+          {/*  fit="cover"*/}
+          {/*  className="bg-fixed"*/}
+          {/*/>*/}
         </m.div>
         <div className="p-4 md:p-8 flex flex-col justify-center mt-auto md:mt-0">
           <m.div
-            className="absolute h-12 md:relative top-0 left-0 pl-8 md:-ml-8 z-40 py-2 cursor-pointer w-full md:w-fit backdrop-grayscale bg-[rgba(255,255,255,.75)]"
+            className="absolute h-12 md:relative top-0 left-0 pl-4 md:-ml-8 z-40 py-2 cursor-pointer w-full md:w-fit backdrop-grayscale bg-[rgba(255,255,255,.75)]"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.1 }}
@@ -47,7 +51,6 @@ const Project = ({ blok }) => {
           <m.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
             viewport={{ once: true }}
           >
             {title.split(' ').map((word, i) => (
@@ -80,9 +83,14 @@ const Project = ({ blok }) => {
           />
         </div>
         <div className="md:p-4 h-full md:min-h-[600px] flex flex-col justify-center">
-          <p className="text-md md:text-lg font-light text-gray-800 md:p-4 leading-8">
+          <m.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-md md:text-lg font-light text-gray-800 md:p-4 leading-8"
+          >
             {description}
-          </p>
+          </m.p>
         </div>
       </section>
       <section className="p-4 md:p-8 grid gap-4 md:gap-8 grid-cols-2 justify-items-center auto-rows-auto max-w-7xl m-auto">
