@@ -11,7 +11,7 @@ export default function DefaultTemplate({
   children: React.ReactNode;
 }) {
   const [visible, setVisible] = useState(false);
-  const [backgroundSize, setBackgroundPosition] = useState<string>('');
+  const [backgroundSize, setBackgroundSize] = useState<string>('');
   const [size, setSize] = useState(0);
   const handleScroll = () => {
     const winScroll =
@@ -21,7 +21,7 @@ export default function DefaultTemplate({
       document.documentElement.clientHeight;
     const scrolled = winScroll / height;
     setVisible(scrolled > 0.3);
-    setBackgroundPosition(`${30 * scrolled + 34}px ${30 * scrolled + 34}px`);
+    setBackgroundSize(`${30 * scrolled + 32}px ${30 * scrolled + 32}px`);
     setSize(scrolled);
   };
 

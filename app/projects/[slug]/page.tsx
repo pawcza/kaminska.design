@@ -32,7 +32,7 @@ export default async function Project({
         ...mainImage,
         data64Blur: mainImage?.filename
           ? await getBase64ImageUrl(
-              `${mainImage.filename}/m/100x0/filters:blur(50):quality(30)`,
+              `${mainImage.filename}/m/100x0/filters:blur(2):quality(50)`,
             )
           : '',
       },

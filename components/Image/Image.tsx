@@ -2,7 +2,7 @@ import { AnimatePresence, m } from 'framer-motion';
 import NextImage, { ImageProps } from 'next/image';
 import React, { useState } from 'react';
 
-type Props = {
+export type ImageType = {
   src: string;
   key: string;
   alt?: string;
@@ -13,7 +13,7 @@ type Props = {
   fit?: 'contain' | 'cover';
 } & ImageProps;
 
-const Image: React.FC<Props> = (props) => {
+const Image: React.FC<ImageType> = (props) => {
   const [open, setOpen] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [loadedSize, setLoadedSize] = useState({ width: 0, height: 0 });
@@ -79,7 +79,7 @@ const Image: React.FC<Props> = (props) => {
 export default Image;
 
 const ImageInsides: React.FC<
-  Props & {
+  ImageType & {
     handleLoadingComplete: (image: HTMLImageElement) => void;
     handleClick?: (open: boolean) => void;
     loaded: boolean;

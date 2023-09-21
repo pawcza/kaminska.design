@@ -3,7 +3,12 @@
 @tailwind utilities;
 
 :root {
-  --gradient-color: #b7b7b7;
+  --gradient-color: #e5e5e5;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .body-background {
@@ -14,10 +19,25 @@
   width: 100%;
   z-index: -1;
   background: white;
-  background-image: radial-gradient(var(--gradient-color) 1px, white 2px, white 8px, var(--gradient-color) 9px, white 10px, white 20px, var(--gradient-color) 21px, white 22px, white 30px, var(--gradient-color) 31px, white 32px, white 40px, var(--gradient-color) 41px, transparent 0);
+  background-image: radial-gradient(
+          var(--gradient-color) 1px,
+          white 2px,
+          white 8px,
+          var(--gradient-color) 9px,
+          white 10px,
+          white 20px,
+          var(--gradient-color) 21px,
+          white 22px,
+          white 30px,
+          var(--gradient-color) 31px,
+          white 32px,
+          white 40px,
+          var(--gradient-color) 41px,
+          transparent 0
+  );
   background-size: 32px 32px;
   background-position: center;
-  mask-image: radial-gradient(transparent 60%, black);
+  mask-image: radial-gradient(circle, transparent 50%, black);
 }
 
 .svg-stroke {

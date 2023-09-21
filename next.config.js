@@ -15,6 +15,9 @@ const nextConfig = {
     ],
     formats: ['image/avif', 'image/webp'],
   },
+  experimental: {
+    optimizePackageImports: ['framer-motion'],
+  },
 };
 
 module.exports = withBundleAnalyzer(nextConfig);

@@ -32,7 +32,7 @@ export const GoTop = ({ visible }) => {
     <AnimatePresence>
       {visible && (
         <m.div
-          className="p-4 fixed right-2 bottom-2 cursor-pointer -rotate-45 z-50 backdrop-grayscale bg-[rgba(255,255,255,.75)]"
+          className="p-4 fixed right-2 bottom-2 cursor-pointer -rotate-45 z-50 backdrop-grayscale bg-[rgba(255,255,255,.75)] md:bg-transparent"
           variants={outerVariants}
           initial="initial"
           animate="animate"

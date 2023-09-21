@@ -3,6 +3,7 @@ import { storyblokEditable } from '@storyblok/react/rsc';
 import { m } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 
+import BackgroundImage from '@/components/Image/BackgroundImage';
 // import Image from '@/components/Image/Image';
 import Mousey from '@/components/Mousey/Mousey';
 
@@ -83,20 +84,11 @@ const HomePage = ({ blok }) => {
               onClick={() => router.push(`/projects/${slug}`)}
               viewport={{ once: true }}
             >
-              <m.div className="h-full flex-shrink-0 w-32 sm:w-52 md:w-44 lg:w-64 relative bg-blend-multiply mix-blend-multiply grayscale hover:grayscale-0 border-l-2 pb-2 md:pb-4 border-b-2 pl-2 md:pl-4 border-gray-950">
-                {/*<Image*/}
-                {/*  key={thumbnail.id}*/}
-                {/*  src={thumbnail.filename}*/}
-                {/*  alt={thumbnail.alt}*/}
-                {/*  fullHeight*/}
-                {/*  fit={'cover'}*/}
-                {/*  data64Blur={thumbnail.data64Blur}*/}
-                {/*/>*/}
-                <div
-                  style={{ backgroundImage: `url(${thumbnail.filename})` }}
-                  className="h-full w-full bg-cover bg-blend-multiply"
-                />
-              </m.div>
+              <BackgroundImage
+                className="h-full flex-shrink-0 w-32 sm:w-52 md:w-44 lg:w-64 relative bg-blend-multiply mix-blend-multiply grayscale hover:grayscale-0"
+                src={thumbnail.filename}
+                data64Blur={thumbnail.data64Blur}
+              />
               <div className="pl-6 flex-grow">
                 <p className="text-xl -ml-2 lg:text-4xl border-gray-950 border-b-2 pb-2">
                   {thumbTitle.split(' ').map((word, i) => (
@@ -125,9 +117,9 @@ const HomePage = ({ blok }) => {
         className="w-screen h-screen flex justify-center items-center flex-col"
       >
         <m.span
-          initial={{ opacity: 0, y: -50 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.25 }}
+          transition={{ delay: 0.5 }}
           viewport={{ once: true }}
           className="font-bold text-2xl md:text-4xl pb-2 mb-2 border-b-2 border-gray-950 px-4 relative before:content-[''] before:bg-[rgba(255,255,255,.8)] before:w-full before:h-2 before:block before:absolute before:-bottom-1 before:left-1/8 before:w-1/2 before:absolute"
         >
@@ -136,9 +128,9 @@ const HomePage = ({ blok }) => {
         <m.a
           className="font-light text-lg md:text-xl text-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]"
           href={`mailto:${contactEmail}`}
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.25 }}
+          transition={{ delay: 0.6 }}
           viewport={{ once: true }}
         >
           {contactText}
