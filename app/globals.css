@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --gradient-color: #e5e5e5;
+  --gradient-color: #b7b7b7;
 }
 
 html {
@@ -37,7 +37,7 @@ html {
   );
   background-size: 32px 32px;
   background-position: center;
-  mask-image: radial-gradient(circle, transparent 50%, black);
+  mask-image: radial-gradient(circle, transparent 60%, black);
 }
 
 .svg-stroke {

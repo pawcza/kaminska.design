@@ -7,7 +7,7 @@ type BackgroundImage = {
   className: string;
 } & Partial<ImageType>;
 const BackgroundImage = (props) => {
-  const { src, data64Blur, className, hoverZoom, fit = 'cover' } = props;
+  const { src, data64Blur, className, hoverZoom } = props;
 
   const [loaded, setLoaded] = useState(false);
   const [animated, setAnimated] = useState(false);
@@ -30,7 +30,7 @@ const BackgroundImage = (props) => {
         setLoaded(true);
       };
     }
-  }, [isInView]);
+  }, [isInView, optimizedSrc, seen]);
 
   return (
     <div className={`relative overflow-hidden ${className}`}>
